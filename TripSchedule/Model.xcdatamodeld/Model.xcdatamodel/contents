@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11542" systemVersion="16B2657" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="ScheduleBooks" representedClassName="ScheduleBooks" syncable="YES" codeGenerationType="class">
+        <attribute name="bookId" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="city" attributeType="String" syncable="YES"/>
+        <attribute name="endDate" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="startDate" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="details" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ScheduleDetails" inverseName="book" inverseEntity="ScheduleDetails" syncable="YES"/>
+        <relationship name="shoppings" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Shopping" inverseName="book" inverseEntity="Shopping" syncable="YES"/>
+        <relationship name="todos" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ToDo" inverseName="book" inverseEntity="ToDo" syncable="YES"/>
+    </entity>
+    <entity name="ScheduleDetails" representedClassName="ScheduleDetails" parentEntity="ScheduleBooks" syncable="YES" codeGenerationType="class">
+        <attribute name="dateTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="information" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="place" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="subject" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="trafic" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="book" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="ScheduleBooks" inverseName="details" inverseEntity="ScheduleBooks" syncable="YES"/>
+    </entity>
+    <entity name="Shopping" representedClassName="Shopping" parentEntity="ScheduleBooks" syncable="YES" codeGenerationType="class">
+        <attribute name="completed" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="cost" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="shoppingList" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="book" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ScheduleBooks" inverseName="shoppings" inverseEntity="ScheduleBooks" syncable="YES"/>
+    </entity>
+    <entity name="ToDo" representedClassName="ToDo" parentEntity="ScheduleBooks" syncable="YES" codeGenerationType="class">
+        <attribute name="completed" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="toDoList" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="book" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ScheduleBooks" inverseName="todos" inverseEntity="ScheduleBooks" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="ScheduleBooks" positionX="-443" positionY="-162" width="128" height="166"/>
+        <element name="ScheduleDetails" positionX="-243" positionY="-171" width="128" height="149"/>
+        <element name="Shopping" positionX="-441" positionY="47" width="128" height="115"/>
+        <element name="ToDo" positionX="-245" positionY="55" width="128" height="98"/>
+    </elements>
+</model>

@@ -18,6 +18,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     var myUserDefaults: UserDefaults!
     
+    let myContext =
+        (UIApplication.shared.delegate as! AppDelegate)
+            .persistentContainer.viewContext
+    let myEntityName = "Books"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.

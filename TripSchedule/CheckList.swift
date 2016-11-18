@@ -16,8 +16,9 @@ class CheckList: UIViewController, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell =
-            tableView.dequeueReusableCell(withIdentifier: "checklist",
-                                          for: indexPath)
+            tableView.dequeueReusableCell(withIdentifier: "checklist", for: indexPath)
+        cell.accessoryType = .checkmark
+        cell.textLabel?.text = "AAA"
         return cell
     }
     

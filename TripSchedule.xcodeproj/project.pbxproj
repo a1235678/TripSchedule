@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		153DCD5C1DDDC56900272206 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 153DCD5A1DDDC56900272206 /* Model.xcdatamodeld */; };
 		158F617C1DDB534B00FEF8D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158F617B1DDB534B00FEF8D8 /* AppDelegate.swift */; };
 		158F617E1DDB534B00FEF8D8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158F617D1DDB534B00FEF8D8 /* ViewController.swift */; };
 		158F61811DDB534B00FEF8D8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 158F617F1DDB534B00FEF8D8 /* Main.storyboard */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		153DCD5B1DDDC56900272206 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		158F61781DDB534B00FEF8D8 /* TripSchedule.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TripSchedule.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		158F617B1DDB534B00FEF8D8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		158F617D1DDB534B00FEF8D8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 				15BE3FE11DDC76C000697D95 /* CheckList.swift */,
 				15BE3FE51DDC7B6A00697D95 /* ScheduleEdit.swift */,
 				158F617F1DDB534B00FEF8D8 /* Main.storyboard */,
+				153DCD5A1DDDC56900272206 /* Model.xcdatamodeld */,
 				158F61821DDB534B00FEF8D8 /* Assets.xcassets */,
 				158F61841DDB534B00FEF8D8 /* LaunchScreen.storyboard */,
 				158F61871DDB534B00FEF8D8 /* Info.plist */,
@@ -151,6 +154,7 @@
 				15BE3FE61DDC7B6A00697D95 /* ScheduleEdit.swift in Sources */,
 				15BE3FE01DDC4E7700697D95 /* ScheduleMaster.swift in Sources */,
 				158F617E1DDB534B00FEF8D8 /* ViewController.swift in Sources */,
+				153DCD5C1DDDC56900272206 /* Model.xcdatamodeld in Sources */,
 				15BE3FE21DDC76C000697D95 /* CheckList.swift in Sources */,
 				158F617C1DDB534B00FEF8D8 /* AppDelegate.swift in Sources */,
 				158F618E1DDB670B00FEF8D8 /* HomePageEdit.swift in Sources */,
@@ -316,6 +320,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		153DCD5A1DDDC56900272206 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				153DCD5B1DDDC56900272206 /* Model.xcdatamodel */,
+			);
+			currentVersion = 153DCD5B1DDDC56900272206 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 158F61701DDB534B00FEF8D8 /* Project object */;
 }

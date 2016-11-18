@@ -48,7 +48,7 @@
                         <barButtonItem key="leftBarButtonItem" systemItem="action" id="vxj-ff-LSi"/>
                         <barButtonItem key="rightBarButtonItem" title="Item" systemItem="add" id="fSb-gc-VQl">
                             <connections>
-                                <segue destination="84o-HB-lgI" kind="push" id="qe7-lQ-E35"/>
+                                <segue destination="84o-HB-lgI" kind="show" id="qe7-lQ-E35"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -532,14 +532,17 @@
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                                 <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vVf-4a-XF3">
-                                                    <rect key="frame" x="8" y="4" width="32" height="30"/>
+                                                    <rect key="frame" x="8" y="0.0" width="50" height="40"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" backgroundImage="unchecked"/>
+                                                    <state key="normal" backgroundImage="checked"/>
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="ECe-KK-Aha" id="OYC-Kt-OhI"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -594,6 +597,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="unchecked" width="37" height="37"/>
+        <image name="checked" width="400" height="300"/>
     </resources>
 </document>

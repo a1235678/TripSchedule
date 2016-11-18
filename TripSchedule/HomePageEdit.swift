@@ -32,6 +32,12 @@ class HomePageEdit: UIViewController, UITextFieldDelegate {
     
     var myUserDefaults :UserDefaults!
     
+    //core data
+    let myContext =
+        (UIApplication.shared.delegate as! AppDelegate)
+            .persistentContainer.viewContext
+    let myEntityName = "Books"
+    
     @IBOutlet weak var cityTextField: UITextField!
     @IBOutlet weak var startDatePicker: UITextField!
     @IBOutlet weak var endDatePicker: UITextField!
@@ -58,6 +64,21 @@ class HomePageEdit: UIViewController, UITextFieldDelegate {
         print(books)
         
         //儲存資料
+        
+        // insert
+        let insetData = NSEntityDescription.insertNewObject(
+            forEntityName: myEntityName, into: myContext)
+        
+        insetData.setValue(1, forKey: "id")
+        insetData.setValue("Jesse", forKey: "name")
+        insetData.setValue(176.2, forKey: "height")
+        
+        do {
+            try myContext.save()
+        } catch {
+            fatalError("\(error)")
+        }
+        
         cityArray.append(cityTextField.text!)
         startDateArray.append(books.startDate)
         endDateArray.append(books.endDate)
