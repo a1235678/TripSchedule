@@ -7,57 +7,55 @@
 //
 
 import UIKit
+import CoreData
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    var booksArray = [Books]()
-    
-    var cityArray = [String]()
-    var startDateArray = [Date]()
-    var endDateArray = [Date]()
+    var booksArray: [Books] = []
     
     var myUserDefaults: UserDefaults!
+    
+    var coreDataConnect :CoreDataConnect!
+    var myRecords :[Record]! = []
+    let moc = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    @IBOutlet weak var booksTableView: UITableView!
     
     let myContext =
         (UIApplication.shared.delegate as! AppDelegate)
             .persistentContainer.viewContext
-    let myEntityName = "Books"
+    let myEntityName = "ScheduleBooks"
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        // 連接 Core Data
+        coreDataConnect = CoreDataConnect(context: self.moc)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cityArray.count
+        return booksArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell =
             tableView.dequeueReusableCell(withIdentifier: "Books",
                 for: indexPath)
-        let name = cityArray[indexPath.row]
-        cell.textLabel?.text = name
+        let name = booksArray[indexPath.row].city
+        let start = booksArray[indexPath.row].startDate
+        let end = booksArray[indexPath.row].endDate
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        
+        cell.textLabel?.text = formatter.string(from: start) + " ~ " + formatter.string(from: end) + "   " + name + "之旅"
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "OpenBook", sender: self)
     }
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        let tag = sender as! Int
-//        let controller = segue.destination as! movie
-//        controller.movieDetail = movieArray[tag]
-//    }
-    
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        
-//        if(segue.identifier == "DetailView") {
-//            var vc = segue.destinationViewController as DetailViewController
-//        }
-//        
-//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -65,20 +63,28 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        myUserDefaults = UserDefaults.standard
-        //讀取資料
-        if let info = myUserDefaults.array(forKey: "cityArray") {
-            cityArray = info as! [String]
-        }
-        if let info = myUserDefaults.array(forKey: "startDateArray") {
-            startDateArray = info as! [Date]
-        }
-        if let info = myUserDefaults.array(forKey: "endDateArray") {
-            endDateArray = info as! [Date]
+        
+        // 取得資料
+        let results = coreDataConnect.retrieve(myEntityName,
+                                                    predicate: nil,
+                                                    sort: [["bookId":false]],
+                                                    limit:nil)
+
+        var index = 0
+        for result in results! {
+            if let city = result.value(forKey: "city")! as? String,
+                let start = result.value(forKey: "startDate")! as? Date,
+                let end = result.value(forKey: "endDate")! as? Date{
+                let books: Books = Books(city: city, startDate: start, endDate: end)
+                booksArray.append(books)
+            }
+            index += 1
         }
         
+        //booksTableView.reloadData()
+        
         print("viewDidLoad()")
-        print(cityArray)
+        print(booksArray)
         
     }
 

@@ -9,19 +9,19 @@
 import UIKit
 
 struct Books {
-    var city: String!
+    var city: String
     var startDate: Date
     var endDate: Date
-    init(){
-        city = ""
-        startDate = Date()
-        endDate = Date()
+    init(city: String, startDate: Date, endDate: Date){
+        self.city = city
+        self.startDate = startDate
+        self.endDate = endDate
     }
 }
 
 class HomePageEdit: UIViewController, UITextFieldDelegate {
     
-    var books = Books()
+    var books = Books(city: "123", startDate: Date(), endDate: Date())
     
     var cityArray = [String]()
     var startDateArray = [Date]()
@@ -33,16 +33,32 @@ class HomePageEdit: UIViewController, UITextFieldDelegate {
     var myUserDefaults :UserDefaults!
     
     //core data
+    var coreDataConnect :CoreDataConnect!
+    let moc = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var myRecords :[Record]! = []
     let myContext =
         (UIApplication.shared.delegate as! AppDelegate)
             .persistentContainer.viewContext
-    let myEntityName = "Books"
+    let myEntityName = "ScheduleBooks"
     
     @IBOutlet weak var cityTextField: UITextField!
     @IBOutlet weak var startDatePicker: UITextField!
     @IBOutlet weak var endDatePicker: UITextField!
     
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Do any additional setup after loading the view.
+        // 連接 Core Data
+        coreDataConnect = CoreDataConnect(context: self.moc)
+        
+        // 基本設定
+//        self.view.backgroundColor = UIColor.white
+//        self.navigationController?.navigationBar.isTranslucent = false
+        
+    }
+    
     @IBAction func pressDone(_ sender: UIBarButtonItem) {
 //        let count = self.navigationController!.viewControllers.count
 //        let preController =
@@ -51,33 +67,67 @@ class HomePageEdit: UIViewController, UITextFieldDelegate {
         
         myUserDefaults = UserDefaults.standard
         //讀取資料
-        if let info = myUserDefaults.array(forKey: "cityArray") {
-            cityArray = info as! [String]
-        }
-        if let info = myUserDefaults.array(forKey: "startDateArray") {
-            startDateArray = info as! [Date]
-        }
-        if let info = myUserDefaults.array(forKey: "endDateArray") {
-            endDateArray = info as! [Date]
-        }
-
-        print(books)
+//        if let info = myUserDefaults.array(forKey: "cityArray") {
+//            cityArray = info as! [String]
+//        }
+//        if let info = myUserDefaults.array(forKey: "startDateArray") {
+//            startDateArray = info as! [Date]
+//        }
+//        if let info = myUserDefaults.array(forKey: "endDateArray") {
+//            endDateArray = info as! [Date]
+//        }
+//
+//        print(books)
         
         //儲存資料
-        
-        // insert
-        let insetData = NSEntityDescription.insertNewObject(
-            forEntityName: myEntityName, into: myContext)
-        
-        insetData.setValue(1, forKey: "id")
-        insetData.setValue("Jesse", forKey: "name")
-        insetData.setValue(176.2, forKey: "height")
-        
-        do {
-            try myContext.save()
-        } catch {
-            fatalError("\(error)")
+        if cityTextField.text != "" {
+            
+            // 取得目前 seq 的最大值
+            var seq = 100
+            let selectResult = coreDataConnect.retrieve(myEntityName, predicate:nil, sort: [["bookId":true]], limit: 1)
+            if let results = selectResult {
+                for result in results {
+                    seq = (result.value(forKey: "bookId") as! Int) + 1
+                }
+            }
+            print(seq)
+            
+            // auto increment
+//            var id = 1
+//            if let idSeq = myUserDefaults.object(forKey: "idSeq") as? Int {
+//                id = idSeq + 1
+//            }
+            
+            // insert
+            let insertResult = coreDataConnect.insert(
+                myEntityName, attributeInfo: [
+                    "bookId" : "\(seq)",
+                    "city" : cityTextField.text!,
+                    "endDate" : books.endDate,
+                    "startDate" : books.startDate
+                ])
+            
+//            if insertResult {
+//                print("新增資料成功")
+//                
+//                // 新增資料至陣列
+//                let newRecord = coreDataConnect.retrieve(myEntityName, predicate: "id = \(id)", sort: nil, limit: 1)
+//                
+//                myRecords.insert((newRecord![0] as! Record), at: 0)
+//                
+//                // 新增 cell 在第一筆 row
+//                myTableView.beginUpdates()
+//                myTableView.insertRows(at: [IndexPath(row: 0, section: 0)], with: .fade)
+//                myTableView.endUpdates()
+//                
+//                // 更新 auto increment
+//                myUserDefaults.set(id, forKey: "idSeq")
+//                myUserDefaults.synchronize()
+//                
+//                
+//            }
         }
+
         
         cityArray.append(cityTextField.text!)
         startDateArray.append(books.startDate)
@@ -100,14 +150,8 @@ class HomePageEdit: UIViewController, UITextFieldDelegate {
         //self.dismiss(animated: true, completion: nil)
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        
-    }
     @IBAction func cityEditingDidEnd(_ sender: Any) {
-        books.city = cityTextField.text
+        books.city = cityTextField.text!
     }
     
     override func didReceiveMemoryWarning() {
