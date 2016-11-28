@@ -7,31 +7,16 @@
 //
 
 import UIKit
-import CoreData
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    var booksArray: [Books] = []
-    
-    var myUserDefaults: UserDefaults!
-    
-    var coreDataConnect :CoreDataConnect!
-    var myRecords :[Record]! = []
-    let moc = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
     @IBOutlet weak var booksTableView: UITableView!
-    
-    let myContext =
-        (UIApplication.shared.delegate as! AppDelegate)
-            .persistentContainer.viewContext
-    let myEntityName = "ScheduleBooks"
-    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        // 連接 Core Data
-        coreDataConnect = CoreDataConnect(context: self.moc)
+        loadFile()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -42,14 +27,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let cell =
             tableView.dequeueReusableCell(withIdentifier: "Books",
                 for: indexPath)
-        let name = booksArray[indexPath.row].city
-        let start = booksArray[indexPath.row].startDate
-        let end = booksArray[indexPath.row].endDate
+        let name = booksArray[indexPath.row]["city"] as! String
+        let start = booksArray[indexPath.row]["startDate"]
+        let end = booksArray[indexPath.row]["endDate"]
         
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
-        
-        cell.textLabel?.text = formatter.string(from: start) + " ~ " + formatter.string(from: end) + "   " + name + "之旅"
+        //formatter.string(from: start as! Date) + " ~ " + formatter.string(from: end as! Date) + "   " +
+        cell.textLabel?.text = name + "之旅"
         return cell
     }
     
@@ -64,28 +49,26 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     override func viewWillAppear(_ animated: Bool) {
         
-        // 取得資料
-        let results = coreDataConnect.retrieve(myEntityName,
-                                                    predicate: nil,
-                                                    sort: [["bookId":false]],
-                                                    limit:nil)
-
-        var index = 0
-        for result in results! {
-            if let city = result.value(forKey: "city")! as? String,
-                let start = result.value(forKey: "startDate")! as? Date,
-                let end = result.value(forKey: "endDate")! as? Date{
-                let books: Books = Books(city: city, startDate: start, endDate: end)
-                booksArray.append(books)
-            }
-            index += 1
-        }
-        
-        //booksTableView.reloadData()
+        booksTableView.reloadData()
         
         print("viewDidLoad()")
         print(booksArray)
         
+    }
+    
+    //讀取紀錄位址的bookArray
+    func loadFile(){
+        let fileManager = FileManager.default
+        let docUrls = fileManager.urls(for: .documentDirectory, in:
+            .userDomainMask)
+        let docUrl = docUrls.first
+        let url = docUrl?.appendingPathComponent("booksArray.txt")
+        
+        if let array = NSArray(contentsOf: url!){
+            booksArray = array as! [Dictionary<String, Any>]
+        }
+        print(docUrl)
+        booksTableView.reloadData()
     }
 
 

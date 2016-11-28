@@ -9,6 +9,29 @@
 import UIKit
 
 class CheckList: UIViewController, UITableViewDataSource {
+    @IBOutlet weak var insertText: UITextField!
+    var listArray: [List] = []
+    
+    @IBAction func insertButton(_ sender: Any) {
+        
+        //儲存資料
+        if insertText.text != "" {
+            
+            
+            // insert
+//            let insertResult = coreDataConnect.insert(
+//                myEntityName, attributeInfo: [
+//                    "toDoList" : insertText.text!,
+//                    "completed" : false
+//                ])
+      
+        }
+    }
+    
+    func getData(){
+        // 取得資料
+        
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
@@ -17,13 +40,17 @@ class CheckList: UIViewController, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell =
             tableView.dequeueReusableCell(withIdentifier: "checklist", for: indexPath)
-        cell.accessoryType = .checkmark
-        cell.textLabel?.text = "AAA"
+        //cell.accessoryType = .checkmark
+        
+        //listArray[indexPath.row].toDoList
+        //listArray[indexPath.row].completed
+        
         return cell
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        getData()
 
         // Do any additional setup after loading the view.
     }

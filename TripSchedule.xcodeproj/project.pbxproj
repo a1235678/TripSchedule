@@ -7,24 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		153DCD5C1DDDC56900272206 /* TripSchedule.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 153DCD5A1DDDC56900272206 /* TripSchedule.xcdatamodeld */; };
-		1564FDE21DE3EB6F00CB4073 /* CoreDataConnect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1564FDE11DE3EB6F00CB4073 /* CoreDataConnect.swift */; };
-		1564FDE41DE3EBBA00CB4073 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1564FDE31DE3EBBA00CB4073 /* Record.swift */; };
 		158F617C1DDB534B00FEF8D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158F617B1DDB534B00FEF8D8 /* AppDelegate.swift */; };
 		158F617E1DDB534B00FEF8D8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158F617D1DDB534B00FEF8D8 /* ViewController.swift */; };
 		158F61811DDB534B00FEF8D8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 158F617F1DDB534B00FEF8D8 /* Main.storyboard */; };
 		158F61831DDB534B00FEF8D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 158F61821DDB534B00FEF8D8 /* Assets.xcassets */; };
 		158F61861DDB534B00FEF8D8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 158F61841DDB534B00FEF8D8 /* LaunchScreen.storyboard */; };
 		158F618E1DDB670B00FEF8D8 /* HomePageEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158F618D1DDB670B00FEF8D8 /* HomePageEdit.swift */; };
+		15B193FE1DEBD44500D7D238 /* BooksArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B193FD1DEBD44500D7D238 /* BooksArray.swift */; };
 		15BE3FE01DDC4E7700697D95 /* ScheduleMaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BE3FDF1DDC4E7700697D95 /* ScheduleMaster.swift */; };
 		15BE3FE21DDC76C000697D95 /* CheckList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BE3FE11DDC76C000697D95 /* CheckList.swift */; };
 		15BE3FE61DDC7B6A00697D95 /* ScheduleEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BE3FE51DDC7B6A00697D95 /* ScheduleEdit.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		153DCD5B1DDDC56900272206 /* TripSchedule.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TripSchedule.xcdatamodel; sourceTree = "<group>"; };
-		1564FDE11DE3EB6F00CB4073 /* CoreDataConnect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataConnect.swift; sourceTree = "<group>"; };
-		1564FDE31DE3EBBA00CB4073 /* Record.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
 		158F61781DDB534B00FEF8D8 /* TripSchedule.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TripSchedule.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		158F617B1DDB534B00FEF8D8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		158F617D1DDB534B00FEF8D8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -33,6 +28,7 @@
 		158F61851DDB534B00FEF8D8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		158F61871DDB534B00FEF8D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		158F618D1DDB670B00FEF8D8 /* HomePageEdit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePageEdit.swift; sourceTree = "<group>"; };
+		15B193FD1DEBD44500D7D238 /* BooksArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BooksArray.swift; sourceTree = "<group>"; };
 		15BE3FDF1DDC4E7700697D95 /* ScheduleMaster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleMaster.swift; sourceTree = "<group>"; };
 		15BE3FE11DDC76C000697D95 /* CheckList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckList.swift; sourceTree = "<group>"; };
 		15BE3FE51DDC7B6A00697D95 /* ScheduleEdit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScheduleEdit.swift; path = ../ScheduleEdit.swift; sourceTree = "<group>"; };
@@ -71,16 +67,14 @@
 				158F617B1DDB534B00FEF8D8 /* AppDelegate.swift */,
 				158F617D1DDB534B00FEF8D8 /* ViewController.swift */,
 				158F618D1DDB670B00FEF8D8 /* HomePageEdit.swift */,
+				15B193FD1DEBD44500D7D238 /* BooksArray.swift */,
 				15BE3FDF1DDC4E7700697D95 /* ScheduleMaster.swift */,
 				15BE3FE11DDC76C000697D95 /* CheckList.swift */,
 				15BE3FE51DDC7B6A00697D95 /* ScheduleEdit.swift */,
 				158F617F1DDB534B00FEF8D8 /* Main.storyboard */,
-				153DCD5A1DDDC56900272206 /* TripSchedule.xcdatamodeld */,
 				158F61821DDB534B00FEF8D8 /* Assets.xcassets */,
 				158F61841DDB534B00FEF8D8 /* LaunchScreen.storyboard */,
 				158F61871DDB534B00FEF8D8 /* Info.plist */,
-				1564FDE11DE3EB6F00CB4073 /* CoreDataConnect.swift */,
-				1564FDE31DE3EBBA00CB4073 /* Record.swift */,
 			);
 			path = TripSchedule;
 			sourceTree = "<group>";
@@ -158,13 +152,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				15BE3FE61DDC7B6A00697D95 /* ScheduleEdit.swift in Sources */,
-				1564FDE21DE3EB6F00CB4073 /* CoreDataConnect.swift in Sources */,
-				1564FDE41DE3EBBA00CB4073 /* Record.swift in Sources */,
 				15BE3FE01DDC4E7700697D95 /* ScheduleMaster.swift in Sources */,
 				158F617E1DDB534B00FEF8D8 /* ViewController.swift in Sources */,
-				153DCD5C1DDDC56900272206 /* TripSchedule.xcdatamodeld in Sources */,
 				15BE3FE21DDC76C000697D95 /* CheckList.swift in Sources */,
 				158F617C1DDB534B00FEF8D8 /* AppDelegate.swift in Sources */,
+				15B193FE1DEBD44500D7D238 /* BooksArray.swift in Sources */,
 				158F618E1DDB670B00FEF8D8 /* HomePageEdit.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -328,19 +320,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		153DCD5A1DDDC56900272206 /* TripSchedule.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				153DCD5B1DDDC56900272206 /* TripSchedule.xcdatamodel */,
-			);
-			currentVersion = 153DCD5B1DDDC56900272206 /* TripSchedule.xcdatamodel */;
-			path = TripSchedule.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 158F61701DDB534B00FEF8D8 /* Project object */;
 }

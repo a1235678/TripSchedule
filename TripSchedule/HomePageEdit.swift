@@ -8,38 +8,16 @@
 
 import UIKit
 
-struct Books {
-    var city: String
-    var startDate: Date
-    var endDate: Date
-    init(city: String, startDate: Date, endDate: Date){
-        self.city = city
-        self.startDate = startDate
-        self.endDate = endDate
-    }
-}
-
 class HomePageEdit: UIViewController, UITextFieldDelegate {
     
-    var books = Books(city: "123", startDate: Date(), endDate: Date())
+    //var books = Books(city: "123", startDate: Date(), endDate: Date())
     
-    var cityArray = [String]()
-    var startDateArray = [Date]()
-    var endDateArray = [Date]()
+    var city: String = ""
+    var startDate: Date = Date()
+    var endDate: Date = Date()
     
     var myDatePicker: UIDatePicker!
     var myLabel: UILabel!
-    
-    var myUserDefaults :UserDefaults!
-    
-    //core data
-    var coreDataConnect :CoreDataConnect!
-    let moc = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    var myRecords :[Record]! = []
-    let myContext =
-        (UIApplication.shared.delegate as! AppDelegate)
-            .persistentContainer.viewContext
-    let myEntityName = "ScheduleBooks"
     
     @IBOutlet weak var cityTextField: UITextField!
     @IBOutlet weak var startDatePicker: UITextField!
@@ -50,108 +28,34 @@ class HomePageEdit: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        // 連接 Core Data
-        coreDataConnect = CoreDataConnect(context: self.moc)
-        
-        // 基本設定
-//        self.view.backgroundColor = UIColor.white
-//        self.navigationController?.navigationBar.isTranslucent = false
-        
+
     }
     
     @IBAction func pressDone(_ sender: UIBarButtonItem) {
-//        let count = self.navigationController!.viewControllers.count
-//        let preController =
-//            self.navigationController?.viewControllers[count-2] as! ViewController
-//        preController.savingBook = books
-        
-        myUserDefaults = UserDefaults.standard
-        //讀取資料
-//        if let info = myUserDefaults.array(forKey: "cityArray") {
-//            cityArray = info as! [String]
-//        }
-//        if let info = myUserDefaults.array(forKey: "startDateArray") {
-//            startDateArray = info as! [Date]
-//        }
-//        if let info = myUserDefaults.array(forKey: "endDateArray") {
-//            endDateArray = info as! [Date]
-//        }
-//
-//        print(books)
         
         //儲存資料
+        
         if cityTextField.text != "" {
             
-            // 取得目前 seq 的最大值
-            var seq = 100
-            let selectResult = coreDataConnect.retrieve(myEntityName, predicate:nil, sort: [["bookId":true]], limit: 1)
-            if let results = selectResult {
-                for result in results {
-                    seq = (result.value(forKey: "bookId") as! Int) + 1
-                }
-            }
-            print(seq)
-            
-            // auto increment
-//            var id = 1
-//            if let idSeq = myUserDefaults.object(forKey: "idSeq") as? Int {
-//                id = idSeq + 1
-//            }
-            
             // insert
-            let insertResult = coreDataConnect.insert(
-                myEntityName, attributeInfo: [
-                    "bookId" : "\(seq)",
-                    "city" : cityTextField.text!,
-                    "endDate" : books.endDate,
-                    "startDate" : books.startDate
-                ])
+            let books = ["city": cityTextField.text!, "startDate": startDate, "endDate": endDate] as [String : Any]
+            booksArray.append(books)
             
-//            if insertResult {
-//                print("新增資料成功")
-//                
-//                // 新增資料至陣列
-//                let newRecord = coreDataConnect.retrieve(myEntityName, predicate: "id = \(id)", sort: nil, limit: 1)
-//                
-//                myRecords.insert((newRecord![0] as! Record), at: 0)
-//                
-//                // 新增 cell 在第一筆 row
-//                myTableView.beginUpdates()
-//                myTableView.insertRows(at: [IndexPath(row: 0, section: 0)], with: .fade)
-//                myTableView.endUpdates()
-//                
-//                // 更新 auto increment
-//                myUserDefaults.set(id, forKey: "idSeq")
-//                myUserDefaults.synchronize()
-//                
-//                
-//            }
+            saveFile()
+            
+        print(booksArray)
         }
-
-        
-        cityArray.append(cityTextField.text!)
-        startDateArray.append(books.startDate)
-        endDateArray.append(books.endDate)
-        
-        myUserDefaults.setValue(self.cityArray, forKey: "cityArray")
-        myUserDefaults.setValue(self.startDateArray, forKey: "startDateArray")
-        myUserDefaults.setValue(self.endDateArray, forKey: "endDateArray")
-        
-        myUserDefaults.synchronize()
-        
-        print(cityArray)
-        
-        self.navigationController?.popViewController(animated: true)
+        _ = self.navigationController?.popViewController(animated: true)
         //self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func pressCancel(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        _ = self.navigationController?.popViewController(animated: true)
         //self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func cityEditingDidEnd(_ sender: Any) {
-        books.city = cityTextField.text!
+        city = cityTextField.text!
     }
     
     override func didReceiveMemoryWarning() {
@@ -200,13 +104,13 @@ class HomePageEdit: UIViewController, UITextFieldDelegate {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
         startDatePicker.text = formatter.string(from: datePicker.date)
-        books.startDate = datePicker.date
+        startDate = datePicker.date
     }
     func datePickerChanged2(datePicker: UIDatePicker){
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
         endDatePicker.text = formatter.string(from: datePicker.date)
-        books.endDate = datePicker.date
+        endDate = datePicker.date
     }
     
 
