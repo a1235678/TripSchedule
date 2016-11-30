@@ -11,12 +11,21 @@ import UIKit
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var booksTableView: UITableView!
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         loadFile()
+    }
+    
+    func tableView(_ tableView: UITableView, commit
+        editingStyle: UITableViewCellEditingStyle, forRowAt
+        indexPath: IndexPath) {
+        
+        booksArray.remove(at: indexPath.row)
+        tableView.deleteRows(at:[indexPath], with: UITableViewRowAnimation.fade)
+        
+        saveFile()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -28,8 +37,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             tableView.dequeueReusableCell(withIdentifier: "Books",
                 for: indexPath)
         let name = booksArray[indexPath.row]["city"] as! String
-        let start = booksArray[indexPath.row]["startDate"]
-        let end = booksArray[indexPath.row]["endDate"]
+        //let start = booksArray[indexPath.row]["startDate"]
+        //let end = booksArray[indexPath.row]["endDate"]
         
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
@@ -39,7 +48,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        bookNumber = indexPath.row
         performSegue(withIdentifier: "OpenBook", sender: self)
+        
     }
 
     override func didReceiveMemoryWarning() {

@@ -8,7 +8,10 @@
 
 import Foundation
 
-var booksArray: [Dictionary<String, Any>] = []
+var booksArray: [[String:Any]] = []
+//var booksArray = [["city": String(), "startDate": Date(), "endDate": Date(), "checkList": [["text": String(), "completion": Bool()]]]]
+
+var bookNumber: Int = 0
 
 struct Books {
     var city: String

@@ -13,6 +13,8 @@
 		158F61831DDB534B00FEF8D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 158F61821DDB534B00FEF8D8 /* Assets.xcassets */; };
 		158F61861DDB534B00FEF8D8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 158F61841DDB534B00FEF8D8 /* LaunchScreen.storyboard */; };
 		158F618E1DDB670B00FEF8D8 /* HomePageEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158F618D1DDB670B00FEF8D8 /* HomePageEdit.swift */; };
+		15AC6C9F1DED7C5900B9A600 /* ShoppingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AC6C9E1DED7C5900B9A600 /* ShoppingViewController.swift */; };
+		15AC6CA31DEDD09500B9A600 /* NewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AC6CA21DEDD09500B9A600 /* NewViewController.swift */; };
 		15B193FE1DEBD44500D7D238 /* BooksArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B193FD1DEBD44500D7D238 /* BooksArray.swift */; };
 		15BE3FE01DDC4E7700697D95 /* ScheduleMaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BE3FDF1DDC4E7700697D95 /* ScheduleMaster.swift */; };
 		15BE3FE21DDC76C000697D95 /* CheckList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BE3FE11DDC76C000697D95 /* CheckList.swift */; };
@@ -28,6 +30,8 @@
 		158F61851DDB534B00FEF8D8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		158F61871DDB534B00FEF8D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		158F618D1DDB670B00FEF8D8 /* HomePageEdit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePageEdit.swift; sourceTree = "<group>"; };
+		15AC6C9E1DED7C5900B9A600 /* ShoppingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingViewController.swift; sourceTree = "<group>"; };
+		15AC6CA21DEDD09500B9A600 /* NewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewViewController.swift; sourceTree = "<group>"; };
 		15B193FD1DEBD44500D7D238 /* BooksArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BooksArray.swift; sourceTree = "<group>"; };
 		15BE3FDF1DDC4E7700697D95 /* ScheduleMaster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleMaster.swift; sourceTree = "<group>"; };
 		15BE3FE11DDC76C000697D95 /* CheckList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckList.swift; sourceTree = "<group>"; };
@@ -67,11 +71,13 @@
 				158F617B1DDB534B00FEF8D8 /* AppDelegate.swift */,
 				158F617D1DDB534B00FEF8D8 /* ViewController.swift */,
 				158F618D1DDB670B00FEF8D8 /* HomePageEdit.swift */,
+				15BE3FE11DDC76C000697D95 /* CheckList.swift */,
+				15AC6C9E1DED7C5900B9A600 /* ShoppingViewController.swift */,
 				15B193FD1DEBD44500D7D238 /* BooksArray.swift */,
 				15BE3FDF1DDC4E7700697D95 /* ScheduleMaster.swift */,
-				15BE3FE11DDC76C000697D95 /* CheckList.swift */,
 				15BE3FE51DDC7B6A00697D95 /* ScheduleEdit.swift */,
 				158F617F1DDB534B00FEF8D8 /* Main.storyboard */,
+				15AC6CA21DEDD09500B9A600 /* NewViewController.swift */,
 				158F61821DDB534B00FEF8D8 /* Assets.xcassets */,
 				158F61841DDB534B00FEF8D8 /* LaunchScreen.storyboard */,
 				158F61871DDB534B00FEF8D8 /* Info.plist */,
@@ -157,6 +163,8 @@
 				15BE3FE21DDC76C000697D95 /* CheckList.swift in Sources */,
 				158F617C1DDB534B00FEF8D8 /* AppDelegate.swift in Sources */,
 				15B193FE1DEBD44500D7D238 /* BooksArray.swift in Sources */,
+				15AC6CA31DEDD09500B9A600 /* NewViewController.swift in Sources */,
+				15AC6C9F1DED7C5900B9A600 /* ShoppingViewController.swift in Sources */,
 				158F618E1DDB670B00FEF8D8 /* HomePageEdit.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

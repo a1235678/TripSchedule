@@ -40,6 +40,7 @@ class HomePageEdit: UIViewController, UITextFieldDelegate {
             // insert
             let books = ["city": cityTextField.text!, "startDate": startDate, "endDate": endDate] as [String : Any]
             booksArray.append(books)
+            //, "checkList": [String: Any](), "shoppingList": [String: Any]()
             
             saveFile()
             
